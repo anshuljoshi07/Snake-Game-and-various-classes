@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./graphs.css">
+</head>
+<body>
+  <!-- visibility: hidden; -->
+  <!-- margin-top: 320px; -->
+    <div  id="cloud1" style="  z-index: 5; height: 150px; width:150px; border-radius: 50%; background-color: aqua;  position: absolute;  visibility: hidden; text-align: center; padding-top: 40px;">I'm the cloud</div>
+    <div  id="cloud2" style=" opacity: 30%; z-index: 5; margin-top:20px ; margin-left: 250px; height: 15px; width:50px;  background-color: rgb(178, 122, 195);  position: absolute;    padding-top: 2px;">I'm arrow</div>
+    <div  id="cloud3" style=" opacity: 30% ; z-index: 5; height: 250px; width:200px;  background-color: rgb(149, 227, 23);  position: absolute;   text-align: center; padding-top: 40px;">I'm visualizer</div>
+
+
+    <div style="display: flex;">
+    <div id="code" style="width: 50%;"   data-pym-src="https://www.jdoodle.com/embed/v0/79XC"></div>
+
+
+    <div>  <pre style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(171, 178, 191); background: rgb(40, 44, 52);"><code class="language-scala" style="white-space: pre;"><span class="hljs-class" style="color: rgb(249, 38, 114);">object</span><span class="hljs-class"> </span><span class="hljs-class" style="color: rgb(97, 174, 238);">CallByNameExample</span><span class="hljs-class"> </span><span>{
+    </span><span>  </span><span style="color: rgb(249, 38, 114);">def</span><span style="color: rgb(97, 174, 238);"> </span><span style="color: rgb(97, 174, 238);">main</span><span>(args: </span><span style="color: rgb(209, 154, 102);">Array</span><span>[</span><span style="color: rgb(209, 154, 102);">String</span><span>]): </span><span style="color: rgb(209, 154, 102);">Unit</span><span> = {
+    </span><span>    printTimestamp(getTimestamp()) </span><span style="color: rgb(177, 142, 177); font-style: italic;">// The getTimestamp() expression is not evaluated yet</span><span>
+    </span>  }
+    
+    <span>  </span><span style="color: rgb(177, 142, 177); font-style: italic;">// Call-by-name function</span><span>
+    </span><span>  </span><span style="color: rgb(249, 38, 114);">def</span><span style="color: rgb(97, 174, 238);"> </span><span style="color: rgb(97, 174, 238);">printTimestamp</span><span>(timestamp: =&gt; </span><span style="color: rgb(209, 154, 102);">Long</span><span>): </span><span style="color: rgb(209, 154, 102);">Unit</span><span> = {
+    </span><span>    println(</span><span style="color: rgb(152, 195, 121);">"Inside printTimestamp function"</span><span>)
+    </span><span>    println(</span><span style="color: rgb(152, 195, 121);">"Current timestamp: "</span><span> + timestamp) </span><span style="color: rgb(177, 142, 177); font-style: italic;">// The 'timestamp' expression is evaluated here</span><span>
+    </span>  }
+    
+    <span>  </span><span style="color: rgb(249, 38, 114);">def</span><span style="color: rgb(97, 174, 238);"> </span><span style="color: rgb(97, 174, 238);">getTimestamp</span><span>(): </span><span style="color: rgb(209, 154, 102);">Long</span><span> = {
+    </span><span>    println(</span><span style="color: rgb(152, 195, 121);">"Getting current timestamp"</span><span>)
+    </span><span>    </span><span style="color: rgb(209, 154, 102);">System</span><span>.currentTimeMillis()
+    </span>  }
+    }
+    </code></pre>
+
+    <pre>
+      <code id="c1" onmouseover="cloud_vis(this)" onmouseout="no_cloud_vis(this)">
+        hello
+      </code>
+
+      <code id="c2" onmouseover="cloud_vis(this)" onmouseout="no_cloud_vis(this)">
+        world
+      </code>
+      
+      <code id="c3" onmouseover="cloud_vis(this)" onmouseout="no_cloud_vis(this)" >
+        void DijkstrasShortestPath (int source_node, int node_count, VVPII& graph) {
+
+          // Assume that the distance from source_node to other nodes is infinite 
+          // in the beginnging, i.e initialize the distance vector to a max value
+          const long long INF = 999999999999;
+          vector<unsigned long long>dist(node_count, INF);
+          set<PII> set_length_node;
+          
+          // Distance from starting vertex to itself is 0
+          dist[source_node] = 0;
+          set_length_node.insert(PII(0,source_node));
+      
+          while (!set_length_node.empty()) {
+      
+              PII top = *set_length_node.begin();
+              set_length_node.erase(set_length_node.begin());
+      
+              int current_source_node = top.second;
+      
+              for (auto& it : graph[current_source_node]) {
+      
+                  int adj_node = it.first;
+                  int length_to_adjnode = it.second;
+          
+                  // Edge relaxation 
+                  if (dist[adj_node] > length_to_adjnode + dist[current_source_node]) {
+          
+                      // If the distance to the adjacent node is not INF, means the pair <dist, node> is in the set
+                      // Remove the pair before updating it in the set.
+                      if (dist[adj_node] != INF) {
+                         set_length_node.erase(set_length_node.find(PII(dist[adj_node],adj_node))); 
+                      }
+                      dist[adj_node] = length_to_adjnode + dist[current_source_node];
+                      set_length_node.insert(PII(dist[adj_node], adj_node));
+                  }
+              }
+          }   
+      
+          for (int i=0; i<node_count; i++)
+              cout << "Source Node(" << source_node << ") -> Destination Node(" << i << ") : " << dist[i] << endl;
+      }
+      </code>
+    </pre>
+
+
+
+
+
+
+  </div>    
+
+    </div>
+
+    <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+    <script>
+   
+        let data =["This statement is hello","This statement is world","This is the whole code you ought to learn"]
+        let map = {"c1":0, "c2":1,"c3":2 };
+
+
+      let c1 = document.querySelector("#c1");
+      c1.addEventListener("click", c1f);
+      let c2 = document.querySelector("#c2");
+      c2.addEventListener("click", c1f);
+    //   c2.addEventListener("cloud_vis")
+    //   onmouseover="cloud_vis(this)" onmouseout="no_cloud_vis(this)
+      let c3 = document.querySelector("#c3");
+      c3.addEventListener("click", c1f);
+     
+      function c1f (e){
+        console.log(e.target.id);
+     let height = e.target.getBoundingClientRect().top +  window.scrollY;
+     let width = e.target.getBoundingClientRect().left +  window.scrollX;
+        console.log(width);
+     let cloud1 = document.getElementById("cloud1");
+  
+     cloud1.style.color = 'red';
+     cloud1.style.marginTop=`${height-50}px`;
+     cloud1.style.marginLeft=`${width-150}px`;
+
+     let cloud2 = document.getElementById("cloud2");
+     let cloud3 = document.getElementById("cloud3");
+     cloud2.style.marginTop=`${height}px`;
+     cloud2.style.marginLeft=`${width-190}px`;
+     cloud3.style.marginTop=`${height-50}px`;
+     cloud3.style.marginLeft=`${width-400}px`;
+    // = height;
+     cloud1.innerText=data[map[`${e.target.id}`]];
+     cloud1.style.visibility="visible";
+    }
+
+       
+    function clf2 (e){
+        // console.log(e);
+     let height = e.getBoundingClientRect().top +  window.scrollY;
+     let width = e.getBoundingClientRect().left +  window.scrollX;
+        // console.log(width);
+     let cloud1 = document.getElementById("cloud1");
+     cloud1.style.color = 'red';
+     cloud1.style.marginTop=`${height-50}px`;
+     cloud1.style.marginLeft=`${width-150}px`;
+
+     let cloud2 = document.getElementById("cloud2");
+     let cloud3 = document.getElementById("cloud3");
+     cloud2.style.marginTop=`${height}px`;
+     cloud2.style.marginLeft=`${width-190}px`;
+     cloud3.style.marginTop=`${height-50}px`;
+     cloud3.style.marginLeft=`${width-400}px`;
+    // = height;
+    cloud1.innerText=data[map[`${e.id}`]];
+     cloud1.style.visibility="visible";
+    }
+
+    function clear_hover(x){
+        let cloud1 = document.getElementById("cloud1");
+     
+     cloud1.style.visibility="hidden";
+    }
+
+   function cloud_vis(x){
+        console.log(x.id);
+        let block_touched = document.getElementById(`${x.id}`);
+        clf2(block_touched);
+
+    }
+
+    function no_cloud_vis(x){
+        // console.log(x.id);
+        // let block_touched = document.getElementById(`${x.id}`);
+        // clear_hover(block_touched);
+    }
+   
+    
+    // cloud1.addEventListener("mouseout", LogoHoverRemove);
+
+    // "visibility":"visible"
+
+    // //  cloud1.style.visibility=visible;
+    //   }
+
+    </script>
+</body>
+</html>

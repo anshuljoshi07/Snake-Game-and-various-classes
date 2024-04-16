@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button class="numbers">1</button>
+    <button class="numbers">2</button>
+    <button class="numbers">3</button>
+    <button class="numbers">4</button>
+    <button class="numbers">5</button>
+    <button class="numbers">6</button>
+    <button class="numbers">7</button>
+    <button class="numbers">8</button>
+    <button class="numbers">9</button>
+    <button class="numbers">+</button>
+    <button class="numbers">-</button>
+    <button class="numbers">*</button>
+    <button class="numbers">%</button>
+    <button class="numbers">/</button>
+    <button id="AC">AC</button>
+    <button id ="solve">Solve</button>
+    <input id="input"  type="text">
+    
+
+
+    <script>
+        let input = document.getElementById("input");
+       let AC = document.getElementById("AC");
+       let solve = document.getElementById("solve");
+       let numbers = document.querySelectorAll(".numbers");
+      
+       AC.addEventListener("click",function(){
+        input.value="";
+       })
+       solve.addEventListener("click",function(){
+
+        try{
+       let expression =  eval(input.value);
+        }catch(e){
+            input.value="pagal hai kya";
+            setTimeout(function(){
+                input.value="hogya";
+            }, 2000)
+        }
+       input.value =expression;    ;  
+
+       })
+
+       for(let i of numbers){
+      
+        i.addEventListener("click", function(){
+          let my_val= i.innerHTML;
+            // console.log(i.innerText);
+            let val = input.value;
+            
+            input.value=val+my_val;
+        })
+       }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+*{
+    padding: 0%;
+    margin: 0%;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-color: black; */
+
+}
+
+#nav_left{
+    display: flex;
+   
+ 
+}
+
+#nav_right{
+    display: flex;
+   
+   
+}
+
+#nav{
+ border: 1px solid black;
+ display: flex;
+ flex-wrap: wrap;
+ width: 100%;
+ height: 10vh;
+ justify-content: space-between;
+ position: fixed;
+ z-index: 5;
+
+}
+
+
+#lower_right{
+    /* z-index: 4; */
+    position: fixed;
+    right: 2vw ;
+    top: 12vh;
+}
+#lower_left{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    top: 12vh;
+}
+
+img:hover{
+    scale: 105%;
+    opacity: .5;
+}

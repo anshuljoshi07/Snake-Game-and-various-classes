@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" src="./snake_game.css">
+    <style>
+        canvas{
+            border: 20px solid forestgreen;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="1000px" height="600px"  > </canvas>
+    
+
+
+
+
+    <script>
+let canvas = document.querySelector("canvas");
+let ctx = canvas.getContext("2d");
+let cellSize = 50;
+let boardWidth=1000;
+let boardHeight = 600;
+let speed = 200;
+
+let food = generateFood();
+let stone=[];
+ stone = generateStone();
+let direction="ArrowRight"
+let direct = {
+    "ArrowRight" : [50,0],
+    "ArrowLeft"  : [-50,0],
+    "ArrowUp"    : [0,-50],
+    "ArrowDown"  : [0,50]
+}
+let snakeCells = [[0,0]];
+
+
+
+function reset(){
+
+    // let audio  = new Audio("./media_music/song5.mp3");
+    // audio.currentTime=59;
+    // audio.play();
+
+    console.log("stop");
+    alert(`GAME OVER ...YOUR SCORE IS ${snakeCells.length}`);
+  
+   
+    
+
+    
+
+}
+
+
+function update(){
+    let headX = snakeCells[snakeCells.length-1][0];
+    let headY = snakeCells[snakeCells.length-1][1];
+    console.log(direct[direction][0]);
+    let update_x = direct[direction][0];
+    let update_y  = direct[direction][1];
+    let newHeadX = headX + update_x;
+    let newHeadY = headY + update_y ;
+    
+    for(let i of snakeCells){
+        if(i[0]==newHeadX && i[1]==newHeadY){
+            clearInterval(interval);
+        reset();
+        
+        return;
+        }
+    }
+
+    for(let i of stone){
+        if(i[0]==newHeadX && i[1]==newHeadY){
+            clearInterval(interval);
+        reset();
+        
+        return;
+        }
+    }
+
+    if(newHeadX<0 || newHeadX==1000 || newHeadY<0 || newHeadY==600){
+        clearInterval(interval);
+        reset();
+        
+        return;
+        // reset();
+
+    }
+    // console.log(newHeadX);
+    snakeCells.push([newHeadX,newHeadY]);
+    // ctx.clearRect(snakeCells[0][0],snakeCells[0][1],50,50);
+    if(food[0]==newHeadX && food[1]==newHeadY  ){
+        speed=1;
+        stone=generateStone();
+       
+       food= generateFood();
+       console.log(stone[stone.length-1]);
+       console.log(food);
+        if(stone[stone.length-1]==food){
+            console.log("okokok");
+        }
+       while(stone[stone.length-1]==food){
+            console.log("ALERTTTTTT");
+            food=generateFood();
+        }
+
+    }else{   
+         snakeCells.shift();
+        }
+}
+
+function draw(){
+        ctx.clearRect(0,0,1000,600);
+        for(let cell of snakeCells){
+            ctx.fillStyle="green";
+            ctx.fillRect(cell[0],cell[1],cellSize,cellSize);
+        }
+
+        //draw food
+        // console.log(stone);
+        // console.log(stone[stone.length-1][0]);
+        // console.log("food");
+        // console.log(food[0]);
+        while(stone[stone.length-1]==food){
+            console.log("ALERTTTTTT");
+            food=generateFood();
+        }
+
+        ctx.fillStyle="yellow";
+         ctx.fillRect(food[0],food[1],cellSize,cellSize);
+
+         ctx.fillStyle="red";
+         for(let s of stone){
+         ctx.fillRect(s[0],s[1],cellSize,cellSize);
+         }
+}
+
+
+let interval = setInterval(function (){
+
+    update();
+    draw();
+},speed)
+
+
+
+document.addEventListener("keydown",function(e){
+    // console.log(e);
+    direction=e.key;
+    // speed=50;
+    
+
+})
+document.addEventListener("keyup",function(){
+//  speed=50;
+    
+})
+
+
+function generateFood(){
+    return [
+         Math.round((Math.random()*(boardWidth-cellSize))/cellSize)*cellSize,
+        //  Math.round((Math.random()*(boardHeight-cellSize))/cellSize)*cellSize
+        100
+
+    ]
+}
+
+
+function generateStone(){
+    
+       stone.push(  [Math.round((Math.random()*(boardWidth-cellSize))/cellSize)*cellSize,
+        //  Math.round((Math.random()*(boardHeight-cellSize))/cellSize)*cellSize]);
+        100]);
+
+         return stone;
+
+    
+}
+
+
+    </script>
+</body>
+</html>

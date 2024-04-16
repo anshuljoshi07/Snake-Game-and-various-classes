@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>NOTE TAKING APP</H1>
+    <form>
+        <input id="i1" type="text" name="information">
+        <input id="i2" type="Author" name="who are you">
+        <button id="f">submit</button>
+    </form>
+    <H1>NOTES TILL NOW</H1>
+    <ol id="ol">
+       
+    </ol>
+
+
+    <script>
+
+let input = document.getElementById("i1");
+let button = document.getElementById("f");
+let ol  = document.getElementById("ol");
+
+button.addEventListener("click" , function(e){
+    let li = document.createElement("li");
+    li.innerText=input.value;
+    if(input.value!=""){
+    ol.appendChild(li);
+    input.value="";}
+    e.preventDefault();
+ 
+    li.addEventListener("click", function(){
+        li.remove();
+    })
+
+})
+
+
+            // let form = document.getElementById("f");
+            // let ol =  document.getElementById("ol");
+            // let i1 = document.getElementById("i1");
+            // let i2 = document.getElementById("i2");
+            // let note = "";
+            // i1.addEventListener("input" , function(event){
+
+            // })
+
+            // form.addEventListener("click", function(event){
+                
+            //     let li = document.createElement("li");
+            //     li.innerText=i1.value;
+            //     console.log(i1.value);
+            //     ol.appendChild(li);
+            //     li.innerHTML=""
+            //     // event.preventDefault();
+            //     // console.log(event.target);
+                  
+            // })
+    </script>
+</body>
+</html>

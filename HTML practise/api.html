@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        axios.get("https://api.tvmaze.com/singlesearch/shows?q=girls").then(
+            function(res){
+                console.log(res.data);
+            }
+        )
+
+
+
+
+        // let req = new XMLHttpRequest();
+        // req.open("GET","https://api.tvmaze.com/singlesearch/shows?q=girls")
+        // req.send({
+
+        // });
+
+        // req.onerror = function(){
+        //     console.log("ERROR");
+        // };
+
+        // req.onload = function(){
+        //     console.log(this.responseText);
+        // };
+
+        // fetch("https://api.tvmaze.com/singlesearch/shows?q=girls").then(function(res){
+        //     return res.json();
+        // }).then(function(data){
+        //     console.log(data);
+        // })
+    </script>
+</body>
+</html>

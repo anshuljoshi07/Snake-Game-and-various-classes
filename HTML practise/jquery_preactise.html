@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Jquery.js" ></script>
+</head>
+<body>
+
+    <button id="btn">SLide out</button>
+    <div id="div1">
+    <h1>Hello world</h1>
+    <input type="text">
+    <ul>
+        <li>goku</li>
+        <li>gohan</li>
+        <li>goten</li>
+    </ul>
+    <button>Click me</button>
+    </div>
+    <script >
+        // $("h1").css("color","red")
+        $("h1").css(
+            {
+                color:"pink",
+                backgroundColor: "Yellow"
+            }
+        )
+        console.log($("h1").text());
+        //getter
+        console.log($("h1").text("aajao superman"));
+        //setter
+        console.log($("h1").html());
+        //getter
+        console.log($("h1").html("<p>aajao superman</p>"));
+        //setter
+        
+
+        // getAttribute and setAttribute
+
+        //Attr()  //getter and setter
+        // getter
+        console.log($("input").attr("type"));
+        // setter
+        // console.log($("input").attr("type", "color"));
+
+        console.log($("ul").last().text());
+        console.log($("li").first().css("color","red"));
+
+
+        $("h1").addClass("new_class red");
+        $("h1").addClass("new_class1");
+        $("h1").removeClass("new_class1")
+        console.log($("h1").hasClass("red"));
+        $("button").on("click" , function(){
+            console.log("HII i'm on");
+        });
+
+        let li = $("li");
+        li.on("click",function(){
+            $(this).css("color", "pink")
+        })
+
+        $("input").keyup("click", function(){
+            $(this).val("hhaha");
+        })
+
+        $("#btn").on("click", function(){
+            $("#div1").slideToggle(2000);
+        })
+
+        
+    </script>
+</body>
+</html>
